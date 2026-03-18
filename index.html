@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greece Fish Farms Database</title>
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+    <div id="app">
+        <div id="sidebar">
+            <div class="sidebar-header">
+                <h1>GREECE</h1>
+                <p class="subtitle">Aquaculture Database</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number" id="total-count">0</span>
+                        <span class="stat-label">Total Farms</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="finfish-count">0</span>
+                        <span class="stat-label">Finfish Farms</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="shellfish-count">0</span>
+                        <span class="stat-label">Shellfish Farms</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="abandoned-count">0</span>
+                        <span class="stat-label">Abandoned Farms</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="map">Map</button>
+                <button class="tab-btn" data-tab="table">Table</button>
+            </div>
+            <div id="sidebar-filters">
+                <div class="filters">
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        <input type="text" id="search" placeholder="Search by owner or site ID...">
+                    </div>
+                    <div class="filter-group">
+                        <label>Type</label>
+                        <div class="filter-buttons" id="type-filter">
+                            <button class="filter-btn active" data-value="all">All</button>
+                            <button class="filter-btn" data-value="finfish">Finfish</button>
+                            <button class="filter-btn" data-value="shellfish">Shellfish</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Farm Category</label>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Position</label>
+                        <div class="filter-buttons" id="position-filter">
+                            <button class="filter-btn active" data-value="all">All</button>
+                            <button class="filter-btn" data-value="At sea">At Sea</button>
+                            <button class="filter-btn" data-value="Within the coastline">Coastal</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-header">
+                    <span id="results-count">0 results</span>
+                    <button id="clear-filters" class="clear-btn">Clear filters</button>
+                </div>
+                <div id="farm-list" class="farm-list"></div>
+            </div>
+        </div>
+        <div id="map-container">
+            <div id="map"></div>
+            <div id="legend">
+                <div class="legend-item legend-toggle" id="toggle-finfish"><span class="legend-icon finfish-icon"></span> Finfish</div>
+                <div class="legend-item legend-toggle" id="toggle-shellfish"><span class="legend-icon shellfish-icon"></span> Shellfish</div>
+                <div class="legend-item legend-toggle" id="toggle-abandoned"><span class="legend-icon abandoned-icon"></span> Abandoned Farms</div>
+                <div class="legend-item legend-toggle" id="toggle-poay"><span class="legend-icon poay-icon"></span> POAY Zones</div>
+            </div>
+            <div id="minimap"></div>
+        </div>
+        <div id="table-container" class="hidden">
+            <div class="table-toolbar">
+                <div class="table-toolbar-left">
+                    <div class="table-search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                        <input type="text" id="table-search" placeholder="Search farms...">
+                    </div>
+                    <span id="table-count" class="table-count"></span>
+                </div>
+                <div class="table-toolbar-right">
+                    <button id="download-filtered" class="download-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download CSV
+                    </button>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="data-table">
+                    <thead>
+                        <tr id="table-header"></tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+            <div id="table-pagination" class="table-pagination"></div>
+        </div>
+    </div>
+    <div id="detail-panel" class="detail-panel hidden">
+        <button class="close-btn" id="close-detail">&times;</button>
+        <div id="detail-content"></div>
+    </div>
+    <script src="app.js?v=7"></script>
+</body>
+</html>

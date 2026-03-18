@@ -1,0 +1,607 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.041497222222223,
+          38.39351111111111
+        ]
+      },
+      "properties": {
+        "name": "Paralia Sergoulas",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1652,
+          38.343072222222226
+        ]
+      },
+      "properties": {
+        "name": "Agios Nikolaos",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.769530555555555,
+          38.24311111111111
+        ]
+      },
+      "properties": {
+        "name": "Agia 1",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.790886111111114,
+          38.23266944444445
+        ]
+      },
+      "properties": {
+        "name": "Agia 2",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.048611111111114,
+          37.84527777777778
+        ]
+      },
+      "properties": {
+        "name": "Egon-Churchill",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.064444444444444,
+          37.84111111111111
+        ]
+      },
+      "properties": {
+        "name": "Lychnari 1",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.05795277777778,
+          37.84552222222222
+        ]
+      },
+      "properties": {
+        "name": "Lychnari 2",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.053325,
+          37.846044444444445
+        ]
+      },
+      "properties": {
+        "name": "Lyxnari 3",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.09,
+          37.845
+        ]
+      },
+      "properties": {
+        "name": "Vayia",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.105833333333333,
+          37.84722222222222
+        ]
+      },
+      "properties": {
+        "name": "Babouri",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.358244444444445,
+          37.571375
+        ]
+      },
+      "properties": {
+        "name": "Peristeri Cave",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.361111111111114,
+          37.56027777777778
+        ]
+      },
+      "properties": {
+        "name": "Aghia Mavra",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.30860277777778,
+          37.61123333333334
+        ]
+      },
+      "properties": {
+        "name": "Krassopanayia",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.371094444444445,
+          37.55605555555555
+        ]
+      },
+      "properties": {
+        "name": "Steno Methanon",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.437641666666668,
+          37.52683611111111
+        ]
+      },
+      "properties": {
+        "name": "Poros 1",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.44492222222222,
+          37.526897222222225
+        ]
+      },
+      "properties": {
+        "name": "Poros 2",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.945569444444445,
+          37.657944444444446
+        ]
+      },
+      "properties": {
+        "name": "Patroklos 1",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.953477777777778,
+          37.659475
+        ]
+      },
+      "properties": {
+        "name": "Patroklos 2",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.937483333333333,
+          37.65642777777778
+        ]
+      },
+      "properties": {
+        "name": "Patroklos 3",
+        "location_type": "Derelict Equipment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.649175,
+          38.351222222222226
+        ]
+      },
+      "properties": {
+        "name": "Kato Vassiliki",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.793144444444447,
+          38.96351944444445
+        ]
+      },
+      "properties": {
+        "name": "GR_0316 (Agios Thomas)",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.803611111111113,
+          38.95777777777778
+        ]
+      },
+      "properties": {
+        "name": "Limni Pogonitsa",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.921666666666667,
+          38.947222222222216
+        ]
+      },
+      "properties": {
+        "name": "GR_0339 (Cape Gelada)",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.12027777777778,
+          39.03111111111111
+        ]
+      },
+      "properties": {
+        "name": "Menidi 1",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.13985,
+          39.00580277777778
+        ]
+      },
+      "properties": {
+        "name": "Menidi 2",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.134999999999998,
+          39.01444444444444
+        ]
+      },
+      "properties": {
+        "name": "Menidi 3",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.85888888888889,
+          38.955555555555556
+        ]
+      },
+      "properties": {
+        "name": "Nea Kamarina North 1",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.85888888888889,
+          38.953611111111115
+        ]
+      },
+      "properties": {
+        "name": "GR_0261 (Nea Kamarina North 2)",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.794397222222223,
+          38.99236666666667
+        ]
+      },
+      "properties": {
+        "name": "Neochori 1",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.789022222222226,
+          39.000455555555554
+        ]
+      },
+      "properties": {
+        "name": "Neochori 2",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.795783333333336,
+          39.00230277777778
+        ]
+      },
+      "properties": {
+        "name": "Neochori 3",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.10280277777778,
+          38.29210833333333
+        ]
+      },
+      "properties": {
+        "name": "GR_0322 (Oxia)",
+        "location_type": "Non Operational Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.076161111111112,
+          38.48263888888889
+        ]
+      },
+      "properties": {
+        "name": "GR_0268 (north of Port of Astakos)",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.09848333333333,
+          38.46013055555556
+        ]
+      },
+      "properties": {
+        "name": "GR_0030 (Koumaros)",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.101111111111113,
+          38.45777777777778
+        ]
+      },
+      "properties": {
+        "name": "GR_0078 (Koumaros)",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.090555555555554,
+          38.40416666666667
+        ]
+      },
+      "properties": {
+        "name": "GR_0321 (Petalas)",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.092777777777776,
+          38.37972222222222
+        ]
+      },
+      "properties": {
+        "name": "GR_0017 (Dioni)",
+        "location_type": "Non Operational Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.09068611111111,
+          38.371563888888886
+        ]
+      },
+      "properties": {
+        "name": "GR_0117 (Dioni)",
+        "location_type": "Non Operational Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.02722222222222,
+          38.42861111111111
+        ]
+      },
+      "properties": {
+        "name": "Modi",
+        "location_type": "Abandoned Facility"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.054147222222223,
+          38.46611388888889
+        ]
+      },
+      "properties": {
+        "name": "Provati",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.87651111111111,
+          38.607105555555556
+        ]
+      },
+      "properties": {
+        "name": "GR_0081 (Kalamos)",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.779552777777777,
+          38.757311111111115
+        ]
+      },
+      "properties": {
+        "name": "Varko",
+        "location_type": "Abandoned Location"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.085555555555555,
+          38.43583333333333
+        ]
+      },
+      "properties": {
+        "name": "GR_0253 (Petalas)",
+        "location_type": "Abandoned Facility"
+      }
+    }
+  ]
+}
