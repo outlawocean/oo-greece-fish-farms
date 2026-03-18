@@ -1032,7 +1032,8 @@ function setupEvents() {
     });
 
     // POAY zones toggle
-    document.getElementById('toggle-poay').addEventListener('click', function () {
+    document.getElementById('toggle-poay').addEventListener('click', function (e) {
+        if (e.target.classList.contains('legend-info')) return;
         this.classList.toggle('off');
         const visible = !this.classList.contains('off');
         ['poay-fill', 'poay-outline', 'poay-labels'].forEach(id => {

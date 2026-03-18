@@ -510,6 +510,41 @@ select:focus {
     opacity: 0.35;
 }
 
+.legend-info {
+    display: inline-block;
+    margin-left: 0.35em;
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    cursor: default;
+    vertical-align: middle;
+    position: relative;
+}
+
+.legend-info:hover {
+    color: var(--accent-gold);
+}
+
+.legend-info:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.95);
+    color: var(--text-primary);
+    padding: 0.5em 0.75em;
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: 400;
+    white-space: normal;
+    width: 220px;
+    line-height: 1.4;
+    z-index: 10;
+    border: var(--border-heavy);
+    pointer-events: none;
+    margin-bottom: 4px;
+}
+
 /* Minimap */
 #minimap {
     position: absolute;
