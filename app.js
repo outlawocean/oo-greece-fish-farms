@@ -20,6 +20,8 @@ const TABLE_COLUMNS = [
     { key: 'type', label: 'Type', info: 'Whether the farm raises finfish (e.g. sea bass, sea bream) or shellfish (e.g. mussels, oysters)' },
     { key: 'category', label: 'Category', info: 'The farm classification such as cage-based, pond, or hatchery' },
     { key: 'species', label: 'Species' },
+    { key: 'production', label: 'Production' },
+    { key: 'stage', label: 'Stage' },
     { key: 'position', label: 'Position' },
     { key: 'coastDist', label: 'Coast Dist.' },
     { key: 'status', label: 'Status' },
@@ -217,16 +219,27 @@ function populateFilters() {
     });
 }
 
+function matchCoastDist(dist, range) {
+    const d = Number(dist) || 0;
+    switch (range) {
+        case '0-200': return d < 200;
+        case '200-500': return d >= 200 && d < 500;
+        case '500-1000': return d >= 500 && d < 1000;
+        case '1000+': return d >= 1000;
+        default: return true;
+    }
+}
+
 function applyFilters() {
     const search = document.getElementById('search').value.toLowerCase();
     const typeFilter = document.querySelector('#type-filter .filter-btn.active').dataset.value;
     const categoryFilter = document.getElementById('category-filter').value;
-    const positionFilter = document.querySelector('#position-filter .filter-btn.active').dataset.value;
+    const coastDistFilter = document.getElementById('coast-dist-filter').value;
 
     filteredFarms = allFarms.filter(f => {
         if (typeFilter !== 'all' && f.type !== typeFilter) return false;
         if (categoryFilter !== 'all' && f.category !== categoryFilter) return false;
-        if (positionFilter !== 'all' && f.position !== positionFilter) return false;
+        if (coastDistFilter !== 'all' && !matchCoastDist(f.coastDist, coastDistFilter)) return false;
         if (search) {
             const s = search;
             if (!f.owner.toLowerCase().includes(s) &&
@@ -281,7 +294,7 @@ function updateMapFilters() {
 
     const typeFilter = document.querySelector('#type-filter .filter-btn.active').dataset.value;
     const categoryFilter = document.getElementById('category-filter').value;
-    const positionFilter = document.querySelector('#position-filter .filter-btn.active').dataset.value;
+    const coastDistFilter = document.getElementById('coast-dist-filter').value;
     const search = document.getElementById('search').value.toLowerCase();
 
     const filteredFinfish = {
@@ -290,7 +303,7 @@ function updateMapFilters() {
             if (typeFilter === 'shellfish') return false;
             const p = f.properties;
             if (categoryFilter !== 'all' && p.farm_type !== categoryFilter) return false;
-            if (positionFilter !== 'all' && p.position_c !== positionFilter) return false;
+            if (coastDistFilter !== 'all' && !matchCoastDist(p.coast_dist, coastDistFilter)) return false;
             if (search) {
                 if (!(p.owner_name || '').toLowerCase().includes(search) &&
                     !(p.site_id || '').toLowerCase().includes(search) &&
@@ -307,7 +320,7 @@ function updateMapFilters() {
             if (typeFilter === 'finfish') return false;
             const p = f.properties;
             if (categoryFilter !== 'all' && p.farmtype !== categoryFilter) return false;
-            if (positionFilter !== 'all' && p.costal_inl !== positionFilter) return false;
+            if (coastDistFilter !== 'all' && !matchCoastDist(p.distance_t, coastDistFilter)) return false;
             if (search) {
                 if (!(p.owner || '').toLowerCase().includes(search) &&
                     !(p.site_id || '').toLowerCase().includes(search) &&
@@ -320,6 +333,14 @@ function updateMapFilters() {
 
     map.getSource('finfish-source').setData(filteredFinfish);
     map.getSource('shellfish-source').setData(filteredShellfish);
+
+    // Hide abandoned farms when any filter is active
+    const hasActiveFilter = typeFilter !== 'all' || categoryFilter !== 'all' || coastDistFilter !== 'all' || search;
+    const abandonedToggle = document.getElementById('toggle-abandoned');
+    const manuallyHidden = abandonedToggle.classList.contains('off');
+    if (!manuallyHidden) {
+        map.setLayoutProperty('abandoned-layer', 'visibility', hasActiveFilter ? 'none' : 'visible');
+    }
 }
 
 function addMapLayers() {
@@ -921,6 +942,8 @@ function renderTableBody() {
             <td>${farm.type}</td>
             <td>${farm.category || 'N/A'}</td>
             <td>${farm.species || 'N/A'}</td>
+            <td>${farm.production || 'N/A'}</td>
+            <td>${farm.stage || 'N/A'}</td>
             <td>${farm.position || 'N/A'}</td>
             <td>${formatCoastDist(farm.coastDist)}</td>
             <td>${farm.status || 'N/A'}</td>
@@ -985,7 +1008,7 @@ function getPageNumbers(current, total) {
 function generateCSV(farms) {
     const headers = [
         'Site ID', 'Owner', 'Type', 'Category', 'Species',
-        'Position', 'Coast Distance (m)', 'Status', 'Eurostat Code',
+        'Production', 'Stage', 'Position', 'Coast Distance (m)', 'Status', 'Eurostat Code',
         'Eurostat Species', 'Scientific Name', 'Lat', 'Lon'
     ];
 
@@ -1004,6 +1027,8 @@ function generateCSV(farms) {
         escapeCSV(farm.type),
         escapeCSV(farm.category),
         escapeCSV(farm.species),
+        escapeCSV(farm.production),
+        escapeCSV(farm.stage),
         escapeCSV(farm.position),
         farm.coastDist || '',
         escapeCSV(farm.status),
@@ -1052,6 +1077,9 @@ function setupEvents() {
     // Category filter
     document.getElementById('category-filter').addEventListener('change', applyFilters);
 
+    // Coastal distance filter
+    document.getElementById('coast-dist-filter').addEventListener('change', applyFilters);
+
     // Search
     let searchTimeout;
     document.getElementById('search').addEventListener('input', () => {
@@ -1063,6 +1091,7 @@ function setupEvents() {
     document.getElementById('clear-filters').addEventListener('click', () => {
         document.getElementById('search').value = '';
         document.getElementById('category-filter').value = 'all';
+        document.getElementById('coast-dist-filter').value = 'all';
         document.querySelectorAll('.filter-buttons').forEach(group => {
             group.querySelectorAll('.filter-btn').forEach((b, i) => {
                 b.classList.toggle('active', i === 0);

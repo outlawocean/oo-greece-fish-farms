@@ -62,12 +62,14 @@
                         </select>
                     </div>
                     <div class="filter-group">
-                        <label>Position</label>
-                        <div class="filter-buttons" id="position-filter">
-                            <button class="filter-btn active" data-value="all">All</button>
-                            <button class="filter-btn" data-value="At sea">At Sea</button>
-                            <button class="filter-btn" data-value="Within the coastline">Coastal</button>
-                        </div>
+                        <label>Coastal Distance</label>
+                        <select id="coast-dist-filter">
+                            <option value="all">All Distances</option>
+                            <option value="0-200">< 200 m</option>
+                            <option value="200-500">200 – 500 m</option>
+                            <option value="500-1000">500 m – 1 km</option>
+                            <option value="1000+">Over 1 km</option>
+                        </select>
                     </div>
                 </div>
                 <div class="results-header">
