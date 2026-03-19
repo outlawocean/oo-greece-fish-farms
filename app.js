@@ -686,6 +686,12 @@ function selectFarm(farm, fromSidebar = false) {
         switchTab('map');
     }
 
+    // Close sidebar on mobile so the map/detail panel is visible
+    if (fromSidebar && window.matchMedia('(max-width: 768px)').matches) {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebar-overlay').classList.remove('active');
+    }
+
     // Only highlight/scroll sidebar when clicked from the sidebar
     if (fromSidebar) {
         document.querySelectorAll('.farm-item.active').forEach(el => el.classList.remove('active'));
@@ -1182,6 +1188,24 @@ function setupEvents() {
         const csv = generateCSV(getTableFilteredFarms());
         downloadCSV(csv, 'greece-fish-farms.csv');
     });
+
+    // Mobile sidebar toggle
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+
+    function openSidebar() {
+        sidebar.classList.add('open');
+        overlay.classList.add('active');
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+    }
+
+    document.getElementById('sidebar-toggle').addEventListener('click', openSidebar);
+    overlay.addEventListener('click', closeSidebar);
 }
 
 function initMinimap() {

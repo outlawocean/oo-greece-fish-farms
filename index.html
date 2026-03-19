@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/wqi8cnm.css">
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
     <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
     <div id="app">
@@ -77,7 +77,9 @@
                 <div id="farm-list" class="farm-list"></div>
             </div>
         </div>
+        <div id="sidebar-overlay"></div>
         <div id="map-container">
+            <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Open menu">&#9776;</button>
             <div id="map"></div>
             <div id="legend">
                 <div class="legend-item legend-toggle" id="toggle-finfish"><span class="legend-icon finfish-icon"></span> Finfish<span class="legend-info legend-info-left" data-tip="Carnivorous species (e.g. sea bass, sea bream) that, when farmed, are often fed fishmeal reduced from wild-caught fish">&#9432;</span></div>
@@ -118,6 +120,6 @@
         <button class="close-btn" id="close-detail">&times;</button>
         <div id="detail-content"></div>
     </div>
-    <script src="app.js?v=8"></script>
+    <script src="app.js?v=9"></script>
 </body>
 </html>

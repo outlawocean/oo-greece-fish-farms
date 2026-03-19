@@ -951,6 +951,90 @@ select:focus {
     color: var(--text-tertiary);
 }
 
+/* Sidebar overlay & toggle (hidden on desktop) */
+#sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 25;
+}
+
+#sidebar-overlay.active {
+    display: block;
+}
+
+.sidebar-toggle {
+    display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    #sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 85vw;
+        max-width: 320px;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 30;
+    }
+
+    #sidebar.open {
+        transform: translateX(0);
+    }
+
+    #map-container {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.8);
+        border: var(--border-heavy);
+        border-radius: var(--border-radius);
+        color: var(--text-primary);
+        font-size: 1.25rem;
+        z-index: 6;
+        backdrop-filter: blur(8px);
+    }
+
+    /* Hide globe when sidebar is open */
+    #sidebar.open ~ #sidebar-overlay ~ #map-container #minimap {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    #minimap {
+        transition: opacity 0.2s;
+    }
+
+    /* Detail panel full-width on mobile */
+    .detail-panel {
+        width: 100%;
+    }
+
+    /* Stack legend vertically on mobile */
+    #legend {
+        flex-direction: column;
+        gap: 0.5em;
+        right: auto;
+        left: 12px;
+        bottom: 12px;
+        font-size: 0.6875rem;
+    }
+}
+
 /* Hidden utility */
 .hidden {
     display: none !important;
