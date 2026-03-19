@@ -442,20 +442,22 @@ function addMapLayers() {
         }
     });
 
-    // Abandoned sites
+    // Abandoned sites — prohibition / "no entry" icon
     const xSize = 32;
     const xCanvas = document.createElement('canvas');
     xCanvas.width = xSize;
     xCanvas.height = xSize;
     const xCtx = xCanvas.getContext('2d');
     xCtx.strokeStyle = '#e74c3c';
-    xCtx.lineWidth = 3;
+    xCtx.lineWidth = 2.5;
+    const cx = xSize / 2, cy = xSize / 2, r = 10;
+    xCtx.beginPath();
+    xCtx.arc(cx, cy, r, 0, Math.PI * 2);
+    xCtx.stroke();
     xCtx.lineCap = 'round';
     xCtx.beginPath();
-    xCtx.moveTo(6, 6);
-    xCtx.lineTo(xSize - 6, xSize - 6);
-    xCtx.moveTo(xSize - 6, 6);
-    xCtx.lineTo(6, xSize - 6);
+    xCtx.moveTo(cx - r * Math.cos(Math.PI / 4), cy - r * Math.sin(Math.PI / 4));
+    xCtx.lineTo(cx + r * Math.cos(Math.PI / 4), cy + r * Math.sin(Math.PI / 4));
     xCtx.stroke();
 
     const xImageData = xCtx.getImageData(0, 0, xSize, xSize);

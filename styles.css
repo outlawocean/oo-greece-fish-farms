@@ -466,10 +466,13 @@ select:focus {
 
 .abandoned-icon {
     position: relative;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--accent-red);
+    border-radius: 50%;
 }
 
-.abandoned-icon::before,
-.abandoned-icon::after {
+.abandoned-icon::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -478,13 +481,6 @@ select:focus {
     height: 2px;
     background: var(--accent-red);
     border-radius: 1px;
-}
-
-.abandoned-icon::before {
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.abandoned-icon::after {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
 
