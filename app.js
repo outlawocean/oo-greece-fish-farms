@@ -3,6 +3,7 @@ let finfishData = null;
 let shellfishData = null;
 let poayData = null;
 let abandonedData = null;
+let natura2000Data = null;
 let allFarms = [];
 let filteredFarms = [];
 let activePopup = null;
@@ -45,16 +46,18 @@ async function init() {
 }
 
 async function loadData() {
-    const [ff, sf, pz, ab] = await Promise.all([
+    const [ff, sf, pz, ab, n2k] = await Promise.all([
         fetch('data/finfish.geojson').then(r => r.json()),
         fetch('data/shellfish.geojson').then(r => r.json()),
         fetch('data/poay_zones.geojson').then(r => r.json()),
-        fetch('data/abandoned.geojson').then(r => r.json())
+        fetch('data/abandoned.geojson').then(r => r.json()),
+        fetch('data/natura2000_marine.geojson').then(r => r.json())
     ]);
     finfishData = ff;
     shellfishData = sf;
     poayData = pz;
     abandonedData = ab;
+    natura2000Data = n2k;
 }
 
 function initMap() {
@@ -486,6 +489,72 @@ function addMapLayers() {
         }
     });
 
+    // Natura 2000 marine protected areas — background context layer
+    map.addSource('natura2000-source', {
+        type: 'geojson',
+        data: natura2000Data,
+        generateId: true
+    });
+
+    map.addLayer({
+        id: 'natura2000-fill',
+        type: 'fill',
+        source: 'natura2000-source',
+        paint: {
+            'fill-color': '#2d9e8f',
+            'fill-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                0.3,
+                ['interpolate', ['linear'], ['zoom'],
+                    4, 0.1,
+                    8, 0.15,
+                    12, 0.18
+                ]
+            ]
+        }
+    });
+
+    map.addLayer({
+        id: 'natura2000-outline',
+        type: 'line',
+        source: 'natura2000-source',
+        paint: {
+            'line-color': '#2d9e8f',
+            'line-width': [
+                'interpolate', ['linear'], ['zoom'],
+                4, 0.5,
+                8, 1,
+                12, 1.5
+            ],
+            'line-opacity': [
+                'case',
+                ['boolean', ['feature-state', 'hover'], false],
+                1,
+                0.6
+            ]
+        }
+    });
+
+    map.addLayer({
+        id: 'natura2000-labels',
+        type: 'symbol',
+        source: 'natura2000-source',
+        minzoom: 10,
+        layout: {
+            'text-field': ['get', 'SITENAME'],
+            'text-size': 10,
+            'text-font': ['Open Sans Regular'],
+            'text-allow-overlap': false
+        },
+        paint: {
+            'text-color': '#2d9e8f',
+            'text-halo-color': '#000',
+            'text-halo-width': 1.5,
+            'text-opacity': 0.85
+        }
+    });
+
     // POAY aquaculture zones — rendered above farm layers for visibility
     map.addSource('poay-source', {
         type: 'geojson',
@@ -605,6 +674,27 @@ function addMapLayers() {
             return;
         }
 
+        // Then check Natura 2000 zones
+        const n2kHits = map.queryRenderedFeatures(e.point, { layers: ['natura2000-fill'] });
+        if (n2kHits.length > 0) {
+            const hit = n2kHits[0];
+            const p = hit.properties;
+            const siteTypeLabels = { A: 'SPA (Birds Directive)', B: 'SCI/SAC (Habitats Directive)', C: 'SPA + SCI/SAC' };
+            if (activePopup) activePopup.remove();
+            activePopup = new maplibregl.Popup({ offset: 12, maxWidth: '320px' })
+                .setLngLat(e.lngLat)
+                .setHTML(`
+                    <div class="popup-title">Natura 2000 Marine Protected Area</div>
+                    <div class="popup-owner">${p.SITENAME}</div>
+                    <div class="popup-detail"><strong>Site Code:</strong> ${p.SITECODE}</div>
+                    <div class="popup-detail"><strong>Designation:</strong> ${siteTypeLabels[p.SITETYPE] || p.SITETYPE}</div>
+                    <div class="popup-detail"><strong>Area:</strong> ${Number(p.AREAHA).toLocaleString()} ha</div>
+                    <div class="popup-detail"><strong>Marine:</strong> ${p.MARINE_AREA_PERCENTAGE}%</div>
+                `)
+                .addTo(map);
+            return;
+        }
+
         // Clicked empty space — close panels
         document.getElementById('detail-panel').classList.add('hidden');
         document.querySelectorAll('.farm-item.active').forEach(el => el.classList.remove('active'));
@@ -675,6 +765,34 @@ function addMapLayers() {
                 <div class="popup-title">Fish Farm Expansion Zone</div>
                 <div class="popup-owner">${p.zone_en || p.zone_gr}</div>
                 <div class="popup-detail">${p.name_gr}</div>
+            `)
+            .addTo(map);
+    });
+
+    // Natura 2000 zone hover
+    let hoveredN2kId = null;
+    map.on('mouseenter', 'natura2000-fill', () => map.getCanvas().style.cursor = 'pointer');
+    map.on('mouseleave', 'natura2000-fill', () => {
+        map.getCanvas().style.cursor = '';
+        hoverPopup.remove();
+        if (hoveredN2kId !== null) {
+            map.setFeatureState({ source: 'natura2000-source', id: hoveredN2kId }, { hover: false });
+            hoveredN2kId = null;
+        }
+    });
+    map.on('mousemove', 'natura2000-fill', (e) => {
+        if (hoveredN2kId !== null) {
+            map.setFeatureState({ source: 'natura2000-source', id: hoveredN2kId }, { hover: false });
+        }
+        hoveredN2kId = e.features[0].id;
+        map.setFeatureState({ source: 'natura2000-source', id: hoveredN2kId }, { hover: true });
+        const p = e.features[0].properties;
+        hoverPopup
+            .setLngLat(e.lngLat)
+            .setHTML(`
+                <div class="popup-title">Marine Protected Area</div>
+                <div class="popup-owner">${p.SITENAME}</div>
+                <div class="popup-detail">${p.SITECODE}</div>
             `)
             .addTo(map);
     });
@@ -1146,6 +1264,16 @@ function setupEvents() {
         this.classList.toggle('off');
         const visible = !this.classList.contains('off');
         map.setLayoutProperty('abandoned-layer', 'visibility', visible ? 'visible' : 'none');
+    });
+
+    // Natura 2000 toggle
+    document.getElementById('toggle-natura2000').addEventListener('click', function (e) {
+        if (e.target.classList.contains('legend-info')) return;
+        this.classList.toggle('off');
+        const visible = !this.classList.contains('off');
+        ['natura2000-fill', 'natura2000-outline', 'natura2000-labels'].forEach(id => {
+            map.setLayoutProperty(id, 'visibility', visible ? 'visible' : 'none');
+        });
     });
 
     // Table search

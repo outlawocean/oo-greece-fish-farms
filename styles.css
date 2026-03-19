@@ -490,6 +490,12 @@ select:focus {
     border-radius: 2px;
 }
 
+.natura2000-icon {
+    background: rgba(45, 158, 143, 0.2);
+    border: 1.5px solid rgba(45, 158, 143, 0.5);
+    border-radius: 2px;
+}
+
 .legend-toggle {
     cursor: pointer;
     user-select: none;
