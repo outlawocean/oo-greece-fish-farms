@@ -9,6 +9,7 @@
     --sidebar-width: 320px;
     --accent-gold: #d4a052;
     --accent-blue: #64b4dc;
+    --accent-green: #2ecc71;
     --accent-red: #e74c3c;
     --text-primary: #fff;
     --text-secondary: hsla(0, 0%, 100%, 0.5);
@@ -346,8 +347,8 @@ select:focus {
 }
 
 .type-shellfish {
-    background: rgba(100, 180, 220, 0.15);
-    color: var(--accent-blue);
+    background: rgba(46, 204, 113, 0.15);
+    color: var(--accent-green);
 }
 
 .farm-item-name {
@@ -460,8 +461,8 @@ select:focus {
 }
 
 .shellfish-icon {
-    background: var(--accent-blue);
-    border-radius: 50%;
+    background: var(--accent-green);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .abandoned-icon {
@@ -656,7 +657,7 @@ select:focus {
 }
 
 .detail-type-note.shellfish {
-    border-left-color: var(--accent-blue);
+    border-left-color: var(--accent-green);
 }
 
 .detail-title {

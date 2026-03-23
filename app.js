@@ -368,6 +368,27 @@ function addMapLayers() {
         data: finfishData
     });
 
+    // Create diamond icon for shellfish
+    const dSize = 32;
+    const dCanvas = document.createElement('canvas');
+    dCanvas.width = dSize;
+    dCanvas.height = dSize;
+    const dCtx = dCanvas.getContext('2d');
+    dCtx.beginPath();
+    dCtx.moveTo(dSize / 2, 2);
+    dCtx.lineTo(dSize - 2, dSize / 2);
+    dCtx.lineTo(dSize / 2, dSize - 2);
+    dCtx.lineTo(2, dSize / 2);
+    dCtx.closePath();
+    dCtx.fillStyle = '#2ecc71';
+    dCtx.fill();
+    dCtx.strokeStyle = '#000';
+    dCtx.lineWidth = 1.5;
+    dCtx.stroke();
+
+    const dImageData = dCtx.getImageData(0, 0, dSize, dSize);
+    map.addImage('diamond-icon', dImageData, { pixelRatio: 2 });
+
     map.addSource('shellfish-source', {
         type: 'geojson',
         data: shellfishData
@@ -375,19 +396,18 @@ function addMapLayers() {
 
     map.addLayer({
         id: 'shellfish-layer',
-        type: 'circle',
+        type: 'symbol',
         source: 'shellfish-source',
-        paint: {
-            'circle-radius': [
+        layout: {
+            'icon-image': 'diamond-icon',
+            'icon-size': [
                 'interpolate', ['linear'], ['zoom'],
-                4, 3.75,
-                8, 6.25,
-                12, 10
+                4, 0.625,
+                8, 0.875,
+                12, 1.25
             ],
-            'circle-color': '#64b4dc',
-            'circle-stroke-color': '#000',
-            'circle-stroke-width': 1.5,
-            'circle-opacity': 0.85
+            'icon-allow-overlap': true,
+            'icon-ignore-placement': true
         }
     });
 
