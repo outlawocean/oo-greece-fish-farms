@@ -274,7 +274,7 @@ function renderList() {
         div.innerHTML = `
             <div class="farm-item-header">
                 <span class="farm-item-name">${farm.owner || 'Unknown Owner'}</span>
-                <span class="farm-item-type type-${farm.type}">${farm.type}</span>
+                <span class="farm-item-type type-${farm.type}">${farm.type === 'finfish' ? 'Fed' : 'Non-fed'}</span>
             </div>
             <div class="farm-item-meta">
                 <span>${farm.category}</span>
@@ -1078,7 +1078,7 @@ function renderTableBody() {
     tbody.innerHTML = pageData.map(farm => `
         <tr>
             <td>${farm.owner || 'N/A'}</td>
-            <td>${farm.type}</td>
+            <td>${farm.type === 'finfish' ? 'Fed' : 'Non-fed'}</td>
             <td>${farm.category || 'N/A'}</td>
             <td>${farm.species || 'N/A'}</td>
             <td>${farm.production || 'N/A'}</td>
