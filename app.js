@@ -85,7 +85,7 @@ function initMap() {
                                 { type: 'Feature', geometry: { type: 'Point', coordinates: [25.3, 42.7] }, properties: { name: 'Bulgaria' } },
                                 { type: 'Feature', geometry: { type: 'Point', coordinates: [20.1, 41.3] }, properties: { name: 'Albania' } },
                                 { type: 'Feature', geometry: { type: 'Point', coordinates: [21.7, 41.2] }, properties: { name: 'North Macedonia' } },
-                                { type: 'Feature', geometry: { type: 'Point', coordinates: [12.5, 42.5] }, properties: { name: 'Italy' } },
+                                { type: 'Feature', geometry: { type: 'Point', coordinates: [16.5, 42.0] }, properties: { name: 'Italy' } },
                                 { type: 'Feature', geometry: { type: 'Point', coordinates: [33.4, 35.1] }, properties: { name: 'Cyprus' } },
                                 { type: 'Feature', geometry: { type: 'Point', coordinates: [24.7, 35.2] }, properties: { name: 'Crete' } },
                                 { type: 'Feature', geometry: { type: 'Point', coordinates: [30.8, 33.5] }, properties: { name: 'Egypt' } },
