@@ -92,7 +92,7 @@ input, select {
     color: var(--text-secondary);
     letter-spacing: 2px;
     text-transform: capitalize;
-    margin-bottom: 0.375rem;
+    margin-bottom: 0.625rem;
 }
 
 /* Methodology Button */
@@ -108,7 +108,7 @@ input, select {
     font-weight: 500;
     cursor: pointer;
     transition: color 0.2s, border-color 0.2s;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     display: inline-block;
 }
 
