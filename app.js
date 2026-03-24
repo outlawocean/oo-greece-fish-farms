@@ -639,6 +639,7 @@ function addMapLayers() {
 
     // Unified click handler — farms/abandoned take priority over POAY fill
     map.on('click', (e) => {
+        try {
         // Check point layers first (farms, abandoned)
         const pointLayers = ['finfish-layer', 'shellfish-layer', 'abandoned-layer'];
         const pointHits = map.queryRenderedFeatures(e.point, { layers: pointLayers });
@@ -671,10 +672,19 @@ function addMapLayers() {
         if (poayHits.length > 0) {
             const hit = poayHits[0];
             const p = hit.properties;
+
+            // Use source data for reliable bounds (rendered geometry may be clipped)
+            const srcFeatures = map.querySourceFeatures('poay-source');
+            const match = srcFeatures.find(f =>
+                f.properties.name_gr === p.name_gr && f.properties.zone_gr === p.zone_gr
+            );
+            const geom = match ? match.geometry : hit.geometry;
             const bounds = new maplibregl.LngLatBounds();
-            const coords = hit.geometry.coordinates[0];
-            coords.forEach(c => bounds.extend(c));
-            map.fitBounds(bounds, { padding: 80, duration: 1000, maxZoom: 12 });
+            const ring = geom.type === 'MultiPolygon' ? geom.coordinates[0][0] : geom.coordinates[0];
+            if (ring) ring.forEach(c => bounds.extend(c));
+            if (!bounds.isEmpty()) {
+                map.fitBounds(bounds, { padding: 80, duration: 1000, maxZoom: 12 });
+            }
 
             if (activePopup) activePopup.remove();
             activePopup = new maplibregl.Popup({ offset: 12, maxWidth: '300px' })
@@ -715,6 +725,9 @@ function addMapLayers() {
         document.getElementById('detail-panel').classList.add('hidden');
         document.querySelectorAll('.farm-item.active').forEach(el => el.classList.remove('active'));
         if (activePopup) activePopup.remove();
+        } catch (err) {
+            console.error('Click handler error:', err);
+        }
     });
 
     map.on('mouseenter', 'finfish-layer', () => map.getCanvas().style.cursor = 'pointer');
