@@ -92,7 +92,29 @@ input, select {
     color: var(--text-secondary);
     letter-spacing: 2px;
     text-transform: capitalize;
-    margin-bottom: 1rem;
+    margin-bottom: 0.375rem;
+}
+
+/* Methodology Button */
+.methodology-btn {
+    font-size: 0.5625rem;
+    padding: 0.2em 0.5em;
+    border: 1px solid var(--text-tertiary);
+    border-radius: 3px;
+    color: var(--text-secondary);
+    background: transparent;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+}
+
+.methodology-btn:hover {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
 }
 
 .stats {
@@ -1068,27 +1090,6 @@ select:focus {
     }
 }
 
-/* Methodology Button */
-.methodology-btn {
-    font-size: 0.5625rem;
-    padding: 0.2em 0.5em;
-    border: 1px solid var(--text-tertiary);
-    border-radius: 3px;
-    color: var(--text-secondary);
-    background: transparent;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    margin-left: 0.5em;
-    vertical-align: middle;
-    transition: color 0.2s, border-color 0.2s;
-}
-
-.methodology-btn:hover {
-    color: var(--accent-gold);
-    border-color: var(--accent-gold);
-}
 
 /* Modal */
 .modal-overlay {
