@@ -21,7 +21,7 @@ interface Props {
   onEmptyClick: () => void;
 }
 
-const GREECE_CENTER: [number, number] = [23.5, 38.5];
+const GREECE_CENTER: [number, number] = [24.112839983906383, 38.20523604895351];
 
 function makeTriangleIcon(): ImageData {
   const size = 32;
@@ -200,7 +200,9 @@ export function MapView({
         glyphs: 'https://fonts.openmaptiles.org/{fontstack}/{range}.pbf',
       },
       center: GREECE_CENTER,
-      zoom: 6,
+      zoom: 5.95,
+      pitch: 23.5,
+      bearing: 20,
       maxBounds: [[15, 32], [32, 44]],
       attributionControl: false,
     });
@@ -209,6 +211,9 @@ export function MapView({
     map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
     mapRef.current = map;
+    if (process.env.NODE_ENV !== 'production') {
+      (window as unknown as { __map: MLMap }).__map = map;
+    }
 
     map.on('load', () => {
       addLayers(map, data);
