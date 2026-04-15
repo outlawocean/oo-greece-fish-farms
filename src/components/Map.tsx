@@ -117,6 +117,8 @@ export function MapView({
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
 
+    const isMobile = window.innerWidth < 768;
+
     const map = new maplibregl.Map({
       container: containerRef.current,
       style: {
@@ -202,7 +204,7 @@ export function MapView({
       center: GREECE_CENTER,
       zoom: 5.95,
       pitch: 23.5,
-      bearing: 20,
+      bearing: isMobile ? 0 : 20,
       maxBounds: [[15, 32], [32, 44]],
       attributionControl: false,
     });
