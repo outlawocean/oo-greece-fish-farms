@@ -4,7 +4,7 @@ import path from 'node:path';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? '/greece-fish-farms' : '';
+const basePath = isProd ? '' : '';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
