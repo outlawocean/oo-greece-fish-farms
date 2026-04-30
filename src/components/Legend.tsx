@@ -46,7 +46,7 @@ export function Legend({ toggles, onToggle }: Props) {
         <span className="legend-icon abandoned-icon"></span> Abandoned Farms
         <span
           className="legend-info"
-          data-tip="Abandoned cages, nets, and moorings degrade into microplastics, entangle marine life, and leach chemical additives into the water."
+          data-tip="Abandoned cages, nets, and buoys filled with styrofoam degrade into microplastics, entangle marine life, and leach chemical additives into the water."
           onClick={(e) => e.stopPropagation()}
         >
           &#9432;

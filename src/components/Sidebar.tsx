@@ -95,7 +95,7 @@ export function Sidebar({
                 Farms
                 <span
                   className="legend-info legend-info-right"
-                  data-tip="Abandoned cages, nets, and moorings degrade into microplastics, entangle marine life, and leach chemical additives into the water."
+                  data-tip="Abandoned cages, nets, and buoys filled with styrofoam degrade into microplastics, entangle marine life, and leach chemical additives into the water."
                 >
                   &#9432;
                 </span>
