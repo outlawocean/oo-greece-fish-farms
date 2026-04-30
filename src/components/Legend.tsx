@@ -44,6 +44,13 @@ export function Legend({ toggles, onToggle }: Props) {
         onClick={() => onToggle('abandoned')}
       >
         <span className="legend-icon abandoned-icon"></span> Abandoned Farms
+        <span
+          className="legend-info"
+          data-tip="Abandoned cages, nets, and moorings degrade into microplastics, entangle marine life, and leach chemical additives long after operations cease, hampering coastal ecosystem recovery."
+          onClick={(e) => e.stopPropagation()}
+        >
+          &#9432;
+        </span>
       </div>
       <div
         className={`legend-item legend-toggle${toggles.poay ? '' : ' off'}`}

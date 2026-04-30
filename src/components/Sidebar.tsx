@@ -59,15 +59,39 @@ export function Sidebar({
           </div>
           <div className="stat">
             <span className="stat-number">{finfishCount}</span>
-            <span className="stat-label">Fed Farms</span>
+            <span className="stat-label">
+              Fed Farms
+              <span
+                className="legend-info"
+                data-tip="Abandoned cages, nets, and moorings degrade into microplastics, entangle marine life, and leach chemical additives long after operations cease, hampering coastal ecosystem recovery."
+              >
+                &#9432;
+              </span>
+            </span>
           </div>
           <div className="stat">
             <span className="stat-number">{shellfishCount}</span>
-            <span className="stat-label">Non-fed Farms</span>
+            <span className="stat-label">
+              Non-fed Farms
+              <span
+                className="legend-info"
+                data-tip="Abandoned cages, nets, and moorings degrade into microplastics, entangle marine life, and leach chemical additives long after operations cease, hampering coastal ecosystem recovery."
+              >
+                &#9432;
+              </span>
+            </span>
           </div>
           <div className="stat">
             <span className="stat-number">{abandonedCount}</span>
-            <span className="stat-label">Abandoned Farms</span>
+            <span className="stat-label">
+              Abandoned Farms
+              <span
+                className="legend-info"
+                data-tip="Abandoned cages, nets, and moorings degrade into microplastics, entangle marine life, and leach chemical additives long after operations cease, hampering coastal ecosystem recovery."
+              >
+                &#9432;
+              </span>
+            </span>
           </div>
         </div>
       </div>
