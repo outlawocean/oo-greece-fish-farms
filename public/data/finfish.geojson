@@ -997,35 +997,6 @@
     {
       "type": "Feature",
       "properties": {
-        "gid": 1334,
-        "site_id": "GR_0039",
-        "country": "Greece",
-        "owner_name": "Avramar Aquaculture S.A.",
-        "status": "Active",
-        "farm_type": "Seabass-seabream and other coastal fish",
-        "production": "Saltwater tanks/raceways",
-        "producti_1": "Hatchery, Nursery, Broodstock",
-        "purpose": "n.a.",
-        "species_so": "Mediterranean marine fish",
-        "point_info": "Original",
-        "coast_dist": 19827.1596886,
-        "position_c": "Within the coastline",
-        "species_id": "15",
-        "eurostatco": "F33",
-        "eurospecie": "Miscellaneous coastal fishes",
-        "eurospeci0": "n.a."
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.606944444000078,
-          38.56111111100006
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "gid": 1335,
         "site_id": "GR_0040",
         "country": "Greece",
@@ -6159,35 +6130,6 @@
     {
       "type": "Feature",
       "properties": {
-        "gid": 1518,
-        "site_id": "GR_0331",
-        "country": "Greece",
-        "owner_name": "Selonda Aquaculture S.A.",
-        "status": "Active",
-        "farm_type": "Seabass-seabream and other coastal fish",
-        "production": "Saltwater tanks/raceways",
-        "producti_1": "Hatchery, Nursery, Broodstock",
-        "purpose": "n.a.",
-        "species_so": "Mediterranean marine fish",
-        "point_info": "Original",
-        "coast_dist": 19934.1882579,
-        "position_c": "Within the coastline",
-        "species_id": "15",
-        "eurostatco": "F33",
-        "eurospecie": "Miscellaneous coastal fishes",
-        "eurospeci0": "n.a."
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          22.604597222000052,
-          38.56333333300006
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "gid": 1519,
         "site_id": "GR_0333",
         "country": "Greece",
@@ -8618,35 +8560,6 @@
         "coordinates": [
           22.664888889000053,
           39.972222222000084
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "gid": 1348,
-        "site_id": "GR_0069",
-        "country": "Greece",
-        "owner_name": "Avramar Aquaculture S.A.",
-        "status": "Active",
-        "farm_type": "Seabass-seabream and other coastal fish",
-        "production": "Sea cages",
-        "producti_1": "Grow out for human consumption",
-        "purpose": "n.a.",
-        "species_so": "Mediterranean marine fish",
-        "point_info": "Original",
-        "coast_dist": 45120.0765077,
-        "position_c": "Within the coastline",
-        "species_id": "15",
-        "eurostatco": "F33",
-        "eurospecie": "Miscellaneous coastal fishes",
-        "eurospeci0": "n.a."
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          21.02388888900009,
-          39.48833333300007
         ]
       }
     },
