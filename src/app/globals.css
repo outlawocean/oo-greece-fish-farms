@@ -421,6 +421,9 @@ select:focus { border-color: hsla(0, 0%, 100%, 0.25); }
     margin-bottom: 4px;
 }
 .legend-info-left:hover::after { left: 0; transform: none; }
+.legend-info-right:hover::after { left: auto; right: 0; transform: none; }
+
+.stat-label-nowrap { white-space: nowrap; }
 
 #minimap {
     position: absolute;
