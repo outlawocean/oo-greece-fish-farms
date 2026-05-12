@@ -47,7 +47,7 @@ export function MethodologyModal({ open, onClose }: Props) {
           </div>
           <div className="modal-section">
             <h3>Abandoned Farms</h3>
-            <p>Abandoned farm locations compiled by the Rauch Foundation.</p>
+            <p>Abandoned farm locations compiled by OZON NGO.</p>
             <a
               href="https://docs.google.com/spreadsheets/d/11WfrxS_o7UybF34p2g2L4y8-YyI-2j7y4T1UHhUDUG8/edit?gid=667932098#gid=667932098"
               target="_blank"
