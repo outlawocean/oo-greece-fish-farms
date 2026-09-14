@@ -48,16 +48,8 @@ export function MethodologyModal({ open, onClose }: Props) {
           <div className="modal-section">
             <h3>Abandoned Farms</h3>
             <p>
-              Abandoned farm locations compiled by Ozon NGO. Ozon also compiled a list of more
-              than 130 additional abandoned farms and over 75 relocated farms, which can be found{' '}
-              <a
-                href="https://docs.google.com/spreadsheets/d/1YGknZmp19buoE32LQIW-U98aUEszJAZamtzFNDrZlpM/edit?usp=sharing"
-                target="_blank"
-                rel="noopener"
-              >
-                here
-              </a>
-              .
+              Abandoned farm locations compiled by Ozon NGO. They also compiled a list of over
+              200 unnamed abandoned or relocated farms.
             </p>
             <a
               href="https://docs.google.com/spreadsheets/d/11WfrxS_o7UybF34p2g2L4y8-YyI-2j7y4T1UHhUDUG8/edit?gid=667932098#gid=667932098"
@@ -65,6 +57,14 @@ export function MethodologyModal({ open, onClose }: Props) {
               rel="noopener"
             >
               View spreadsheet
+            </a>
+            {' | '}
+            <a
+              href="https://docs.google.com/spreadsheets/d/1YGknZmp19buoE32LQIW-U98aUEszJAZamtzFNDrZlpM/edit?usp=sharing"
+              target="_blank"
+              rel="noopener"
+            >
+              Unnamed Farms
             </a>
           </div>
           <div className="modal-section">
